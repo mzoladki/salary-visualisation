@@ -3,7 +3,12 @@
 
 # COMMAND ----------
 
+import matplotlib.pyplot as plt
+import numpy as np
+
 import pandas as pd
+
+
 salaries = pd.read_csv("data/salary_data_cleaned.csv")
 cost_of_living = pd.read_csv("data/cost-of-living.csv")
 
@@ -52,8 +57,6 @@ top_ratio
 
 # COMMAND ----------
 
-import matplotlib.pyplot as plt
-import numpy as np
 
 fig, ax = plt.subplots()
 new_df = top_ratio.loc[:, ["ratio", "city"]]
@@ -83,9 +86,6 @@ new_df.drop(["cost_of_living", "ratio"], inplace=True, axis=1)
 new_df
 
 # COMMAND ----------
-
-import matplotlib.pyplot as plt
-import numpy as np
 
 fig, ax = plt.subplots()
 
@@ -128,6 +128,7 @@ def map_values(df):
     elif "scientist" in job:
         return "scientist"
     return "other"
+ 
 top_paid_job_types = df
 top_paid_job_types["job_types"] = df.apply(map_values, axis=1)
 top_paid_job_types = df.sort_values(by="min_salary", ascending=False)#.drop_duplicates("job_types", keep="first")
@@ -136,9 +137,6 @@ new_df.drop(["cost_of_living", "ratio"], inplace=True, axis=1)
 new_df
 
 # COMMAND ----------
-
-import matplotlib.pyplot as plt
-import numpy as np
 
 data_analysts = new_df.values[0]
 data_engineer = new_df.values[1]
